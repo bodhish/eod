@@ -1,10 +1,13 @@
+require 'dotenv'
 require 'net/http'
 require 'json'
 require 'time'
 
+Dotenv.load
+
 class GitHubActivityLogger
   GITHUB_API_BASE = "https://api.github.com".freeze
-  NUMBER_OF_HOURS = 50
+  NUMBER_OF_HOURS = ENV['NUMBER_OF_HOURS'].to_i
   TIME_DIFFERENCE = NUMBER_OF_HOURS * 3600
 
   def initialize(username = ENV['GITHUB_USERNAME'], token = ENV['GITHUB_TOKEN'])

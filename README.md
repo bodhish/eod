@@ -4,22 +4,28 @@ The GitHub Activity Logger is a Ruby script that fetches recent activities from 
 
 ## Usage
 
-1. Set up your GitHub personal access token and username as environment variables:
+1. Set up your GitHub personal access token and username in a `.env` file:
 
    ```bash
-   export GITHUB_USERNAME=your_github_username
-   export GITHUB_TOKEN=your_github_token
+   GITHUB_USERNAME=your_github_username
+   GITHUB_TOKEN=your_github_token
    ```
 
-   Replace `your_github_username` and `your_github_token` with your actual GitHub username and personal access token.
+   Replace `your_github_username` and `your_github_token` with your actual GitHub username and personal access token. Make sure to create this .env file in the same directory as your script.
 
-2. Run the script:
+2. Install the required gems:
 
    ```bash
-   ruby gitlog.rb
+   bundle install
    ```
 
-3. The script will fetch recent activities from your GitHub account and log them to a Markdown file named `eod.md`.
+3. Run the script:
+
+   ```bash
+   ruby eod.rb
+   ```
+
+4. The script will fetch recent activities from your GitHub account and log them to a Markdown file named `eod.md`.
 
 ## Features
 
