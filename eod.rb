@@ -1,9 +1,6 @@
-require 'dotenv'
 require 'net/http'
 require 'json'
 require 'time'
-
-Dotenv.load
 
 class GitHubActivityLogger
   GITHUB_API_BASE = "https://api.github.com".freeze
@@ -17,17 +14,17 @@ class GitHubActivityLogger
   end
 
   def log_activities
-    puts "Starting to log activities for #{@username}..."
+
     fetch_github_events
     process_events
     save_activity_log
-    puts "Finished logging activities for #{@username}. Check eod.md for details."
+
   end
 
   private
 
   def fetch_github_events
-    puts "Fetching GitHub events for #{@username}..."
+
     uri = URI("#{GITHUB_API_BASE}/users/#{@username}/events")
     response = make_http_request(uri)
     @events_cache = parse_response(response)
@@ -114,11 +111,8 @@ class GitHubActivityLogger
     end.join
 
     contents = ["**#{Date.today.to_s}**","**Done**", contents].join("\n")
-    puts "----------------------------------------"
     puts contents
-    puts "----------------------------------------"
     File.write(log_filename, contents)
-    puts "Activities logged to #{log_filename}."
   end
 end
 
